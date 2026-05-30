@@ -1,0 +1,252 @@
+/* ============================================================
+   黄昏のキャンプサイト — 共有スタイル
+   ============================================================ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* 夕暮れの空 */
+  --sky-top:    oklch(0.20 0.055 268);
+  --sky-mid:    oklch(0.34 0.10 8);
+  --sky-low:    oklch(0.52 0.135 32);
+  --sky-horizon:oklch(0.72 0.135 55);
+
+  /* 地形シルエット */
+  --ridge-far:  oklch(0.30 0.055 272);
+  --ridge-mid:  oklch(0.235 0.05 268);
+  --ridge-near: oklch(0.165 0.04 260);
+  --grass:      oklch(0.13 0.035 200);
+
+  /* 灯り・アクセント */
+  --ember:      oklch(0.74 0.16 52);
+  --ember-soft: oklch(0.80 0.12 60);
+  --duskred:    oklch(0.56 0.15 24);
+
+  /* 文字・紙 */
+  --paper:   oklch(0.95 0.013 78);
+  --ink:     oklch(0.96 0.012 80);
+  --ink-mut: oklch(0.80 0.018 72);
+  --ink-dim: oklch(0.64 0.02 68);
+  --line:    oklch(0.62 0.02 70 / 0.22);
+  --card:    oklch(0.26 0.028 262 / 0.55);
+  --card-edge: oklch(0.78 0.03 72 / 0.16);
+
+  --maxw: 1140px;
+  --gutter: clamp(20px, 5vw, 64px);
+
+  --serif: var(--font-serif), "Shippori Mincho B1", serif;
+  --sans:  var(--font-sans), "Zen Kaku Gothic New", system-ui, sans-serif;
+  --hand:  var(--font-hand), "Klee One", "Zen Kaku Gothic New", cursive;
+  --mono:  var(--font-mono), ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* トーン: 焚き火の夜 */
+body.scene-fire {
+  --sky-top:    oklch(0.16 0.045 270);
+  --sky-mid:    oklch(0.24 0.075 18);
+  --sky-low:    oklch(0.38 0.115 30);
+  --sky-horizon:oklch(0.55 0.145 45);
+  --ridge-near: oklch(0.13 0.035 255);
+}
+/* トーン: 星空の深夜 */
+body.scene-night {
+  --sky-top:    oklch(0.13 0.04 270);
+  --sky-mid:    oklch(0.18 0.05 264);
+  --sky-low:    oklch(0.26 0.06 270);
+  --sky-horizon:oklch(0.40 0.08 285);
+  --ember:      oklch(0.78 0.13 58);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--sky-top); }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: transparent;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt" 1;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 600; line-height: 1.32; margin: 0; }
+p { margin: 0; }
+
+::selection { background: var(--ember); color: oklch(0.18 0.04 260); }
+
+/* ---------- Atmosphere background (fixed) ---------- */
+.sky {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(120% 80% at 78% 96%,
+      var(--sky-horizon) 0%,
+      var(--sky-low) 22%,
+      var(--sky-mid) 50%,
+      var(--sky-top) 82%);
+  transition: background 1.2s var(--ease);
+}
+.stars { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.star {
+  position: absolute; width: 2px; height: 2px; border-radius: 50%;
+  background: var(--paper);
+  opacity: var(--tw, 0.6);
+  animation: twinkle var(--dur, 4s) ease-in-out infinite alternate;
+  animation-delay: var(--del, 0s);
+}
+.star.big { width: 3px; height: 3px; box-shadow: 0 0 6px var(--ink); }
+@keyframes twinkle { from { opacity: 0.12; } to { opacity: var(--tw, 0.7); } }
+
+/* 流れ星 */
+.shoot {
+  position: fixed; top: 12%; left: -10%; z-index: 1;
+  width: 120px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--paper));
+  opacity: 0; pointer-events: none;
+  transform: rotate(18deg);
+  animation: shoot 9s linear infinite;
+}
+@keyframes shoot {
+  0%, 88% { opacity: 0; transform: translate(0,0) rotate(18deg); }
+  90% { opacity: 0.9; }
+  100% { opacity: 0; transform: translate(70vw, 22vh) rotate(18deg); }
+}
+
+main { position: relative; z-index: 5; }
+
+/* ---------- Layout ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
+.section { padding-block: clamp(72px, 11vw, 150px); position: relative; }
+
+/* セクション見出しの目印（手書きラベル） */
+.eyebrow {
+  font-family: var(--hand);
+  font-size: 1.05rem;
+  color: var(--ember-soft);
+  letter-spacing: 0.08em;
+  display: inline-flex; align-items: center; gap: 0.6em;
+  margin-bottom: 1.1rem;
+}
+.eyebrow::before {
+  content: ""; width: 26px; height: 1px;
+  background: var(--ember); display: inline-block;
+}
+.eyebrow .no { opacity: 0.6; }
+
+.section-title {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.4rem;
+}
+.lead { color: var(--ink-mut); font-size: 1.05rem; max-width: 60ch; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px var(--gutter);
+  transition: background 0.4s var(--ease), backdrop-filter 0.4s;
+}
+.nav.scrolled {
+  background: oklch(0.16 0.04 265 / 0.72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.brand { display: flex; align-items: center; gap: 0.6em; font-family: var(--serif); font-size: 1.18rem; letter-spacing: 0.06em; }
+.brand .mark {
+  width: 14px; height: 14px; flex: none;
+  background: var(--ember);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  filter: drop-shadow(0 0 7px var(--ember));
+}
+.nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 34px); list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  font-size: 0.92rem; letter-spacing: 0.08em; color: var(--ink-mut);
+  position: relative; padding-block: 6px; transition: color 0.25s;
+}
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0;
+  background: var(--ember); transition: width 0.3s var(--ease);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-cta {
+  font-size: 0.86rem; letter-spacing: 0.06em;
+  padding: 8px 16px; border: 1px solid var(--card-edge); border-radius: 999px;
+  color: var(--ink); transition: all 0.3s var(--ease);
+}
+.nav-cta:hover { border-color: var(--ember); color: var(--ember-soft); }
+.nav-toggle { display: none; }
+
+@media (max-width: 720px) {
+  .nav-links { gap: 14px; font-size: 0.8rem; }
+  .nav-links .hide-sm { display: none; }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.55em;
+  font-family: var(--sans); font-size: 0.95rem; letter-spacing: 0.05em;
+  padding: 13px 26px; border-radius: 999px; cursor: pointer;
+  border: 1px solid transparent; transition: all 0.3s var(--ease);
+}
+.btn-primary { background: var(--ember); color: oklch(0.2 0.04 40); font-weight: 500; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px oklch(0.7 0.15 50 / 0.35); }
+.btn-ghost { border-color: var(--card-edge); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ember); color: var(--ember-soft); }
+.btn .arr { transition: transform 0.3s var(--ease); }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.4s var(--ease), border-color 0.4s, box-shadow 0.4s;
+}
+.card:hover { transform: translateY(-5px); border-color: oklch(0.78 0.06 60 / 0.4); box-shadow: 0 22px 50px oklch(0.1 0.04 260 / 0.5); }
+
+/* 点線（地図のルート風） */
+.dotted { border-top: 1px dashed var(--line); }
+
+/* ---------- Image placeholder ---------- */
+.ph {
+  position: relative; overflow: hidden; border-radius: 12px;
+  background:
+    repeating-linear-gradient(135deg,
+      oklch(0.30 0.03 262 / 0.6) 0 10px,
+      oklch(0.24 0.03 262 / 0.6) 10px 20px);
+  border: 1px solid var(--card-edge);
+  display: grid; place-items: center; min-height: 200px;
+}
+.ph span {
+  font-family: var(--mono);
+  font-size: 0.78rem; letter-spacing: 0.12em; color: var(--ink-dim);
+  text-transform: uppercase;
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Footer ---------- */
+.foot {
+  border-top: 1px solid var(--line);
+  padding-block: 54px; margin-top: 40px;
+  position: relative; z-index: 5;
+}
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; }
+.foot small { color: var(--ink-dim); font-size: 0.82rem; letter-spacing: 0.06em; }

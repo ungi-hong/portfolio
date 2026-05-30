@@ -1,0 +1,107 @@
+/* ============================================================
+   作品ページ — 追加しても崩れない可変グリッド設計
+   ============================================================ */
+
+.works-group { margin-top: clamp(40px, 6vw, 80px); }
+.group-label { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 1.8rem; }
+.group-label h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: 0.04em; }
+.group-label .gl-sub { font-family: var(--hand); color: var(--ember-soft); font-size: 1rem; }
+.group-label .gl-count {
+  margin-left: auto; font-family: var(--mono); font-size: 0.74rem;
+  letter-spacing: 0.1em; color: var(--ink-dim);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px;
+}
+
+/* 可変グリッド：列数は幅に応じて自動。カードが増えても自然に折り返す */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 22px;
+}
+
+/* 共通カード */
+.work-card {
+  padding: 30px 28px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.work-card .kind {
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ember-soft);
+}
+.work-card h3 { font-size: 1.4rem; letter-spacing: 0.03em; }
+.work-card .desc { color: var(--ink-mut); font-size: 0.94rem; }
+.work-card .feat { list-style: none; margin: 0.2rem 0 0; padding: 0; display: grid; gap: 0.55rem; }
+.work-card .feat li { color: var(--ink-mut); font-size: 0.88rem; padding-left: 1.2em; position: relative; }
+.work-card .feat li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--ember); }
+
+/* タグ／技術ピル */
+.stack-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.stack-pills span {
+  font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.03em;
+  color: var(--ink-mut); border: 1px solid var(--card-edge); border-radius: 999px; padding: 5px 13px;
+  white-space: nowrap;
+}
+
+/* カード下部：状態バッジ＋リポジトリリンク（常に最下部に揃う） */
+.work-foot {
+  margin-top: auto; padding-top: 14px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  border-top: 1px dashed var(--line);
+}
+.repo {
+  display: inline-flex; align-items: center; gap: 0.5em;
+  color: var(--ember-soft); font-size: 0.85rem; font-family: var(--mono);
+  letter-spacing: 0.03em; transition: color 0.25s;
+}
+.repo:hover { color: var(--ink); }
+.repo .ar { transition: transform 0.3s var(--ease); }
+.work-card:hover .repo .ar, .feature:hover .repo .ar { transform: translateX(4px); }
+
+.status {
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em;
+  padding: 3px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 0.45em;
+}
+.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.status.live { color: oklch(0.78 0.12 155); border: 1px solid oklch(0.78 0.12 155 / 0.4); }
+.status.wip  { color: var(--ember-soft); border: 1px solid oklch(0.8 0.12 60 / 0.4); }
+
+/* 開発中（別枠）の見た目：少し控えめ＆破線 */
+.works-group.is-wip .group-label h2 { color: var(--ink-mut); }
+.work-card.wip {
+  border-style: dashed;
+  background: oklch(0.24 0.025 262 / 0.4);
+}
+.wip-note {
+  margin-top: 2px; padding: 13px 16px; border: 1px dashed var(--line); border-radius: 10px;
+}
+.wip-note .lbl { font-family: var(--hand); color: var(--ember-soft); font-size: 0.9rem; }
+.wip-note p { color: var(--ink-mut); font-size: 0.88rem; margin-top: 0.25rem; }
+
+/* ---- 注目作品（大・スクリーンショット付き） ---- */
+.feature { padding: 0; overflow: hidden; margin-bottom: 22px; }
+.feature-shot { position: relative; }
+.feature-shot img { width: 100%; display: block; border-bottom: 1px solid var(--card-edge); }
+.feature-shot .scrim { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, oklch(0.18 0.04 260 / 0.4)); pointer-events: none; }
+.feature-shot .feature-badge {
+  position: absolute; top: 16px; left: 16px;
+  font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em;
+  background: oklch(0.2 0.04 260 / 0.7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--ember-soft); padding: 5px 12px; border-radius: 999px; border: 1px solid var(--card-edge);
+}
+.feature-body { padding: clamp(28px, 4vw, 48px); }
+.feature-body .kind { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember-soft); }
+.feature-body .feature-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; margin: 0.5rem 0 1rem; }
+.feature-body h3 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); letter-spacing: 0.03em; }
+.feature-body .summary { color: var(--ink-mut); max-width: 70ch; font-size: 1.02rem; }
+
+.feature-split { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(28px, 4vw, 56px); margin-top: 2.4rem; }
+.feature-split h4 { font-size: 1.1rem; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.55em; }
+.feature-split h4 .ic { width: 8px; height: 8px; background: var(--ember); clip-path: polygon(50% 0,100% 100%,0 100%); }
+.feature-split .pts { display: grid; gap: 1rem; }
+.feature-split .pt { color: var(--ink-mut); font-size: 0.94rem; }
+.feature-split .pt b { color: var(--ink); font-weight: 500; font-family: var(--serif); letter-spacing: 0.02em; }
+.feature .work-foot { margin: 2rem clamp(28px, 4vw, 48px) 0; padding: 18px 0 clamp(28px, 4vw, 48px); border-top: 1px dashed var(--line); }
+
+@media (max-width: 760px) {
+  .feature-split { grid-template-columns: 1fr; }
+}
