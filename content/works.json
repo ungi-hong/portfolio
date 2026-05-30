@@ -1,0 +1,134 @@
+{
+  "head": {
+    "eyebrow": "Works — 作ったもの",
+    "title": "手を動かして、<br />生まれたもの。",
+    "lead": "エディタ拡張からキャンプ場の空き通知ボット、面談日程調整アプリまで。 「あったら便利」を、そのまま形にしてきた制作物のまとめです。"
+  },
+  "groups": [
+    {
+      "screenLabel": "開発ツール",
+      "title": "開発ツール",
+      "subtitle": "エディタ / ブラウザ拡張",
+      "count": "公開中",
+      "cards": [
+        {
+          "kind": "VSCode / Cursor 拡張",
+          "name": "Claude Code Manager",
+          "desc": "複数の Claude Code セッションを、エディタを離れずサイドバーから一元管理する拡張機能。",
+          "feats": [
+            "ディレクトリごとに会話部屋を自動仕分け、文脈が混ざらない",
+            "動作中 / 待機 / 放置を一覧表示、クリックで即レジューム",
+            "権限モードやコンテキスト残量を色分け表示",
+            "ストリーミング応答・履歴再生・画像D&D・会話内検索まで Webview 内で完結"
+          ],
+          "status": { "label": "公開中", "type": "live" },
+          "repo": "https://github.com/ungi-hong/claude-code-manager"
+        },
+        {
+          "kind": "VSCode 拡張",
+          "name": "Command Board",
+          "desc": "よく使うコマンドを、ディレクトリを移動せずワンクリックで実行できる拡張機能。",
+          "feats": [
+            "settings.json に実行ディレクトリとコマンドを登録",
+            "各ディレクトリのコマンドを移動なしで実行",
+            "地味な反復作業をボード化して効率化"
+          ],
+          "status": { "label": "公開中", "type": "live" },
+          "repo": "https://github.com/ungi-hong/vscode-extension-command-board"
+        },
+        {
+          "kind": "Chrome 拡張",
+          "name": "GitHub Plus",
+          "desc": "GitHub での執筆を快適にする Chrome 拡張機能。PR や Issue 作成時のリスト操作を効率化。",
+          "feats": [
+            "Tab キーでリスト項目をネスト（子リスト化）",
+            "インデントを1段戻す操作にも対応"
+          ],
+          "status": { "label": "公開中", "type": "live" },
+          "repo": "https://github.com/ungi-hong/github-plus"
+        }
+      ]
+    },
+    {
+      "screenLabel": "Webアプリ",
+      "title": "Web アプリ & 便利ツール",
+      "subtitle": "毎日の「面倒」を自動化する",
+      "count": "公開中",
+      "feature": {
+        "kind": "Web アプリ",
+        "name": "TimePick",
+        "image": "/img/timepick.png",
+        "width": 1600,
+        "height": 788,
+        "imageAlt": "TimePick — 面談日程調整カレンダーの画面",
+        "badge": "FEATURED",
+        "summary": "Google Calendar と双方向に同期しながら、候補生成 → 送付 → 確定 → カレンダー反映までを最短手数で回す、個人運用の面談日程調整アプリ。 「空き時間を探す → 候補を書き出す → 文面を整える → 1つに確定 → 予定登録」という毎回の往復を、1つのカレンダーUIに閉じ込めて自動化しました。",
+        "mainFeatures": [
+          { "b": "候補自動生成", "text": "稼働時間から、Google Calendar の busy・他候補・確定済み面談すべてと被らない空きレンジを抽出。最小レンジ長・予定後バッファも指定可能。" },
+          { "b": "Google Calendar 同期", "text": "各候補を [候補] イベントとして書き込み。transparency: transparent なので空き枠を埋めず、他ツールからの予約も妨げない。" },
+          { "b": "コピペ用テキスト生成", "text": "「12月3日(火) 10:00〜11:00 または 14:00〜15:00」形式の送付文を自動生成。" },
+          { "b": "確定フロー", "text": "候補内で 30分 / 60分スロットを選んで確定 → Meeting 作成 → 通常イベント化 → 候補イベントは自動削除。" },
+          { "b": "その他", "text": "月 / 週 / 日 / スケジュール表示、稼働時間・例外日設定、7日以上動きのない候補の通知バナー。" }
+        ],
+        "techPoints": [
+          { "b": "空きレンジ抽出", "text": "稼働時間のウィンドウから競合する予定を区間として引き算。境界条件まで純粋関数として切り出し Vitest でユニットテスト。" },
+          { "b": "JST 基準の時刻統一", "text": "date-fns / date-fns-tz で JST に統一。テストは TZ=UTC で走らせ、ローカルTZ依存のバグを検出。" },
+          { "b": "OAuth トークン自動リフレッシュ", "text": "tokens イベントで Prisma へ永続化。再ログイン不要で同期継続、削除は 404/410 を正常系として握る。" },
+          { "b": "責務分離", "text": "features/<domain> 配下で view / use-* / service / index に分割し、ロジックとUIを分離。" }
+        ],
+        "stack": [
+          "Next.js 16", "React 19", "TypeScript 5", "Tailwind v4", "shadcn/ui",
+          "Auth.js v5", "Prisma 7", "Neon (PostgreSQL)", "TanStack Query v5",
+          "date-fns-tz", "googleapis", "Zod", "Vitest", "Vercel"
+        ],
+        "status": { "label": "公開中", "type": "live" },
+        "repo": "https://github.com/ungi-hong/timepick"
+      },
+      "cards": [
+        {
+          "kind": "LINE ボット",
+          "name": "Fumotoppara Watcher",
+          "desc": "予約困難で有名な人気キャンプ場「ふもとっぱら」の空きを見張って、LINE で知らせるボット。",
+          "feats": [
+            "行きたい日を登録しておくと、キャンセルで空きが出たタイミングを検知",
+            "空きを検知したら LINE に即通知",
+            "「行きたい」という自分の趣味から生まれたツール"
+          ],
+          "stack": ["LINE Messaging API", "スクレイピング", "定期実行"],
+          "status": { "label": "公開中", "type": "live" },
+          "repo": "https://github.com/ungi-hong/fumotoppara-watcher"
+        }
+      ]
+    },
+    {
+      "screenLabel": "開発中",
+      "title": "開発中のプロジェクト",
+      "subtitle": "いま手を動かしているもの",
+      "count": "WIP",
+      "isWip": true,
+      "cards": [
+        {
+          "kind": "モバイル向け Web アプリ",
+          "name": "UniPark",
+          "desc": "「東京の、障がい者割引がある駐車場」を地図と一覧から探せるモバイル向け Web アプリ。公式サイトを1件ずつ調べる手間を解決する。",
+          "feats": [
+            "現在地周辺マップ検索（MapLibre + MapTiler、bounds 連動で再検索）",
+            "地域から探す一覧（都道府県 → 市区町村、件数バッジ付き）",
+            "駐車場詳細（割引6タイプ、車椅子区画の数・幅・屋根・スロープ等）",
+            "PWA 対応でスマホにインストール可能"
+          ],
+          "stack": [
+            "Next.js 16", "React 19", "pnpm monorepo", "OpenAPI 3.1",
+            "PostGIS", "MSW", "TanStack Query", "MapLibre GL"
+          ],
+          "wip": true,
+          "wipNoteLabel": "現在のフェーズ",
+          "wipNote": "バックエンドAPIは OpenAPI 仕様 + MSW モックで動作する段階。マップ / 一覧 / 詳細の3画面と PWA 化は動作済み、いまは割引データを市区町村単位で地道に収集中。",
+          "status": { "label": "開発中", "type": "wip" },
+          "repo": "https://github.com/ungi-hong/unipark"
+        }
+      ]
+    }
+  ],
+  "next": { "label": "Contact →", "title": "気軽に声をかけてください", "href": "/#contact" }
+}

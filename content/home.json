@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "eyebrow": "ようこそ、焚き火のそばへ",
+    "title": "役割を超えて、<br />落ちているボールを<span class=\"accent\">拾う</span>。",
+    "role": "フロントエンドエンジニア｜React / Next.js / TypeScript ・ 6年",
+    "lead": "実装だけでなく、仕様の曖昧さも、組織の課題も。<br />自分の担当の外に落ちたボールを拾いながら、チーム全体の生産性と品質を前へ進めてきました。",
+    "ctaPrimary": { "label": "経歴を見る", "href": "/career" },
+    "ctaGhost": { "label": "作品を見る", "href": "/works" }
+  },
+  "about": {
+    "no": "01",
+    "eyebrow": "About",
+    "title": "技術は、<br />価値を実現する手段。",
+    "paragraphs": [
+      "「役割を超えたオーナーシップ」と「事業視点での技術選定」を強みにしてきました。 実装担当として参画した現場でも、仕様書を一から書いたり、Datadog のログ設計を見直したり、 Claude Code のチーム共通基盤を整えたりと、役割の外に落ちたボールを積極的に拾ってきました。",
+      "技術は目的化せず、あくまで事業価値・ユーザー価値を実現する手段と捉えています。 「昨日の最善が、今日の最善とは限らない」——自分のやり方をアップデートし続けることを大切にしています。"
+    ],
+    "portrait": { "src": "/img/icon.jpg", "alt": "ungi", "ratio": "4/5" },
+    "handNote": "焚き火を囲むのが好きです",
+    "traits": [
+    ]
+  },
+  "stats": [
+    { "value": 6, "unit": "年", "cap": "フロントエンド経験" },
+    { "value": 7, "suffix": "社", "cap": "参画した開発現場" },
+    { "value": 50, "suffix": "名", "cap": "最大チーム規模" },
+    { "value": 6, "unit": "点", "cap": "公開した制作物" }
+  ],
+  "camp": {
+    "no": "02",
+    "eyebrow": "Camp",
+    "title": "山に登り、火を焚く。<br />そしてコードを書く。",
+    "lead": "休日はテントを担いで高原へ。静かな夜、揺れる焚き火を見ていると、 設計のもつれや次に作りたいものの輪郭が、不思議とほどけていきます。 ——その延長で、行きたいキャンプ場の空きを見張るボットまで作ってしまいました。",
+    "photos": [
+      { "src": "/img/camp1.jpg", "alt": "キャンプの写真 1", "ratio": "4/5" },
+      { "src": "/img/camp2.jpg", "alt": "キャンプの写真 2", "ratio": "4/5" },
+      { "src": "/img/camp3.jpg", "alt": "キャンプの写真 3", "ratio": "4/5" }
+    ],
+    "note": {
+      "quote": "“ふもとっぱら、いつか連泊したい。”",
+      "html": "予約困難で有名なキャンプ場の空きを LINE で知らせる <a href=\"/works\" class=\"inline-link\">Fumotoppara Watcher</a> も、この「行きたい」から生まれました。 好きなことが、そのまま作るもののテーマになっています。"
+    }
+  },
+  "teaser": {
+    "no": "03",
+    "eyebrow": "Works",
+    "title": "作ったもの",
+    "lead": "エディタ拡張からキャンプ場通知ボット、日程調整アプリまで。手を動かして生まれた制作物たちです。",
+    "items": [
+      {
+        "kind": "VSCode / Cursor 拡張",
+        "name": "Claude Code Manager",
+        "desc": "複数の Claude Code セッションを、エディタを離れずサイドバーで一元管理。",
+        "href": "/works"
+      },
+      {
+        "kind": "Web アプリ",
+        "name": "TimePick",
+        "desc": "Google Calendar と双方向同期する、面談日程調整カレンダー。",
+        "href": "/works"
+      },
+      {
+        "kind": "LINE ボット",
+        "name": "Fumotoppara Watcher",
+        "desc": "人気キャンプ場のキャンセル空きを検知して LINE 通知。",
+        "href": "/works"
+      }
+    ],
+    "moreLabel": "すべての作品を見る",
+    "moreHref": "/works"
+  },
+  "contact": {
+    "no": "04",
+    "eyebrow": "Contact",
+    "title": "焚き火を囲むように、<br />気軽に声をかけてください。"
+  }
+}
