@@ -1,6 +1,8 @@
+import Image from "next/image";
 import type { WorkCard as WorkCardData } from "@/lib/content";
 import Html from "@/components/Html";
 import { renderInline } from "@/lib/prose";
+import { publicImageSize } from "@/lib/image";
 
 export default function WorkCard({
   card,
@@ -10,8 +12,21 @@ export default function WorkCard({
   className?: string;
 }) {
   const cls = ["work-card card", card.wip ? "wip" : "", className].filter(Boolean).join(" ");
+  const size = card.image ? publicImageSize(card.image) : null;
   return (
     <div className={cls}>
+      {card.image && size && (
+        <div className="work-shot">
+          <Image
+            src={card.image}
+            alt={card.imageAlt ?? card.name}
+            width={size.width}
+            height={size.height}
+            sizes="(max-width: 720px) 100vw, 380px"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+        </div>
+      )}
       <span className="kind">{card.kind}</span>
       <h3>{card.name}</h3>
       <Html as="p" className="desc" html={renderInline(card.desc)} />

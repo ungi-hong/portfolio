@@ -110,6 +110,8 @@
         {
           "kind": "モバイル向け Web アプリ",
           "name": "UniPark",
+          "image": "/img/unipark.png",
+          "imageAlt": "UniPark — 駐車場検索アプリの画面",
           "desc": "「東京の、障がい者割引がある駐車場」を地図と一覧から探せるモバイル向け Web アプリ。公式サイトを1件ずつ調べる手間を解決する。",
           "feats": [
             "現在地周辺マップ検索（MapLibre + MapTiler、bounds 連動で再検索）",

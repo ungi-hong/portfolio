@@ -28,6 +28,14 @@
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--ember-soft);
 }
+/* カード内スクリーンショット（縦長画像は上部を見せてクリップ） */
+.work-card .work-shot {
+  margin: -6px 0 4px;
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--card-edge);
+  background: oklch(0.2 0.03 262 / 0.4);
+  max-height: 320px;
+}
 .work-card h3 { font-size: 1.4rem; letter-spacing: 0.03em; }
 .work-card .desc { color: var(--ink-mut); font-size: 0.94rem; }
 .work-card .feat { list-style: none; margin: 0.2rem 0 0; padding: 0; display: grid; gap: 0.55rem; }

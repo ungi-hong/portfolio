@@ -128,6 +128,8 @@ export interface WorkCard {
   kind: string;
   name: string;
   desc: string;
+  image?: string; // 例: "/img/unipark.png"（縦横は自動取得）
+  imageAlt?: string;
   feats?: string[];
   stack?: string[];
   status: Status;
