@@ -45,8 +45,14 @@
     "no": "03",
     "eyebrow": "Works",
     "title": "作ったもの",
-    "lead": "エディタ拡張からキャンプ場通知ボット、日程調整アプリまで。手を動かして生まれた制作物たちです。",
+    "lead": "障害者割引と支援制度を探せる Web サービスから、エディタ拡張、日程調整アプリまで。手を動かして生まれた制作物たちです。",
     "items": [
+      {
+        "kind": "Web サービス",
+        "name": "障害者くらしナビ",
+        "desc": "制度・助成金と、駐車場・施設の障害者割引を探せるサービス。企画から運用までひとりで。",
+        "href": "/works"
+      },
       {
         "kind": "VSCode / Cursor 拡張",
         "name": "Claude Code Manager",
@@ -57,12 +63,6 @@
         "kind": "Web アプリ",
         "name": "TimePick",
         "desc": "Google Calendar と双方向同期する、面談日程調整カレンダー。",
-        "href": "/works"
-      },
-      {
-        "kind": "LINE ボット",
-        "name": "Fumotoppara Watcher",
-        "desc": "人気キャンプ場のキャンセル空きを検知して LINE 通知。",
         "href": "/works"
       }
     ],

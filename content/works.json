@@ -2,9 +2,52 @@
   "head": {
     "eyebrow": "Works — 作ったもの",
     "title": "手を動かして、<br />生まれたもの。",
-    "lead": "エディタ拡張からキャンプ場の空き通知ボット、面談日程調整アプリまで。 「あったら便利」を、そのまま形にしてきた制作物のまとめです。"
+    "lead": "障害者割引と支援制度を探せる Web サービスから、エディタ拡張、キャンプ場の空き通知ボット、面談日程調整アプリまで。 「あったら便利」を形にしてきた制作物のまとめです。"
   },
   "groups": [
+    {
+      "screenLabel": "個人開発",
+      "title": "個人開発プロダクト",
+      "subtitle": "企画から運用まで、ひとりで",
+      "count": "公開中",
+      "feature": {
+        "kind": "Web サービス",
+        "name": "障害者くらしナビ",
+        "image": "/img/shogai-kurashi.jpg",
+        "width": 1600,
+        "height": 788,
+        "imageAlt": "障害者くらしナビのトップページ",
+        "badge": "MAIN PROJECT",
+        "summary": "障害のある人とその家族が、使える制度・助成金と、駐車場・施設の障害者割引を探せる Web サービス。 2026年5月に障害者割引のある駐車場の地図「UniPark」として作り始め、施設・制度・相談先の検索を足して今の形になりました。 企画・設計・実装・データ収集・運用まで、ひとりで進めています。 割引や制度の情報が間違っていると利用者が損をするため、すべての情報に公式の情報源と確認日を載せています。",
+        "stats": [
+          { "value": "18,519", "cap": "制度（助成金・手当・税の減免）" },
+          { "value": "12,175", "cap": "割引・バリアフリー施設" },
+          { "value": "1,580", "cap": "駐車場" },
+          { "value": "1,841", "cap": "掲載している市区町村（47都道府県）" }
+        ],
+        "statsNote": "件数は 2026年10月時点の掲載データ",
+        "mainFeatures": [
+          { "b": "制度を探す", "text": "地域と手帳の種類・等級を入れると、手当・医療費・税の減免などから使える可能性のある制度を出す。条件が足りないときや公式情報だけで判断できないときは「対象外」にせず、確認が必要な制度として示す。" },
+          { "b": "駐車場・施設を探す", "text": "地図と地域の一覧から、駐車料金や入場料の障害者割引、付き添いの条件、車いす用の区画やスロープなどの設備を確かめられる。" },
+          { "b": "相談先を探す", "text": "自治体の障害福祉窓口や民間の相談支援事業所を、地域と相談内容から探せる。" },
+          { "b": "個人情報を端末に残す", "text": "手帳の条件や閲覧履歴は、使っている端末にだけ保存する。現在地で探したときは、URL や履歴に残す緯度・経度を約1km単位に丸める。" }
+        ],
+        "techPoints": [
+          { "b": "AI エージェントによる調査", "text": "Claude Code / Codex の調査エージェントを自治体ごとに動かし、公式サイトから割引と設備を集める。どの情報にも出典 URL と確認日を付ける。" },
+          { "b": "データの鮮度チェック", "text": "GitHub Actions で2週間ごとに全出典を取り直し、料金・割引・設備に関わる文の変化を検知する。変わったものだけを調べ直すので、AI の費用を抑えられる。" },
+          { "b": "検索エンジン向けの描画", "text": "詳細ページの本文は Server Component で生成し、地図の操作部分だけをブラウザで動かす。構造化データ・サイトマップ・canonical も整えた。" },
+          { "b": "アクセシビリティの自動検証", "text": "Playwright と axe で、デスクトップとスマホ幅の両方を WCAG 2.2 AA の基準で検証している。" }
+        ],
+        "stack": [
+          "Next.js 16", "React 19", "TypeScript", "pnpm monorepo", "OpenAPI 3.1",
+          "TanStack Query", "MapLibre GL", "Tailwind v4", "PWA", "Vitest",
+          "Playwright + axe", "Sentry", "GitHub Actions", "Vercel", "Claude Code / Codex"
+        ],
+        "status": { "label": "公開中", "type": "live" },
+        "site": "https://www.shogai-kurashi.jp/",
+        "siteLabel": "サイトを見る"
+      }
+    },
     {
       "screenLabel": "開発ツール",
       "title": "開発ツール",
@@ -97,37 +140,6 @@
           "stack": ["LINE Messaging API", "スクレイピング", "定期実行"],
           "status": { "label": "公開中", "type": "live" },
           "repo": "https://github.com/ungi-hong/fumotoppara-watcher"
-        }
-      ]
-    },
-    {
-      "screenLabel": "開発中",
-      "title": "開発中のプロジェクト",
-      "subtitle": "いま手を動かしているもの",
-      "count": "WIP",
-      "isWip": true,
-      "cards": [
-        {
-          "kind": "モバイル向け Web アプリ",
-          "name": "UniPark",
-          "image": "/img/unipark.png",
-          "imageAlt": "UniPark — 駐車場検索アプリの画面",
-          "desc": "「東京の、障がい者割引がある駐車場」を地図と一覧から探せるモバイル向け Web アプリ。公式サイトを1件ずつ調べる手間を解決する。",
-          "feats": [
-            "現在地周辺マップ検索（MapLibre + MapTiler、bounds 連動で再検索）",
-            "地域から探す一覧（都道府県 → 市区町村、件数バッジ付き）",
-            "駐車場詳細（割引6タイプ、車椅子区画の数・幅・屋根・スロープ等）",
-            "PWA 対応でスマホにインストール可能"
-          ],
-          "stack": [
-            "Next.js 16", "React 19", "pnpm monorepo", "OpenAPI 3.1",
-            "PostGIS", "MSW", "TanStack Query", "MapLibre GL"
-          ],
-          "wip": true,
-          "wipNoteLabel": "現在のフェーズ",
-          "wipNote": "バックエンドAPIは OpenAPI 仕様 + MSW モックで動作する段階。マップ / 一覧 / 詳細の3画面と PWA 化は動作済み、いまは割引データを市区町村単位で地道に収集中。",
-          "status": { "label": "開発中", "type": "wip" },
-          "repo": "https://github.com/ungi-hong/unipark"
         }
       ]
     }

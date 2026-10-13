@@ -11,7 +11,7 @@ import "../../styles/works.css";
 
 export const metadata: Metadata = {
   title: "作品 — ungi ポートフォリオ",
-  description: "ungi の制作物。VSCode/Chrome 拡張、面談日程調整アプリ TimePick、キャンプ場通知ボットなど。",
+  description: "ungi の制作物。障害者割引と支援制度を探せる「障害者くらしナビ」、VSCode/Chrome 拡張、面談日程調整アプリ TimePick など。",
 };
 
 export default function Works() {
