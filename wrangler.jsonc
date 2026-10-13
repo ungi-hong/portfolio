@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-10-13",
+  // next build が書き出した out/ をそのまま配信する（Worker のコードは持たない）
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
