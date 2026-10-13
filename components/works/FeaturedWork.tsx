@@ -23,6 +23,19 @@ export default function FeaturedWork({ feature }: { feature: FeaturedWorkData })
           <h3>{feature.name}</h3>
         </div>
         <p className="summary">{feature.summary}</p>
+        {feature.stats && (
+          <div className="feature-stats">
+            <dl>
+              {feature.stats.map((st) => (
+                <div key={st.cap} className="fs-item">
+                  <dt>{st.cap}</dt>
+                  <dd>{st.value}</dd>
+                </div>
+              ))}
+            </dl>
+            {feature.statsNote && <p className="fs-note">{feature.statsNote}</p>}
+          </div>
+        )}
 
         <div className="feature-split">
           <div>
@@ -61,9 +74,18 @@ export default function FeaturedWork({ feature }: { feature: FeaturedWorkData })
       </div>
       <div className="work-foot">
         <span className={`status ${feature.status.type}`}>{feature.status.label}</span>
-        <a className="repo" href={feature.repo} target="_blank" rel="noopener">
-          GitHub <span className="ar">→</span>
-        </a>
+        <div className="foot-links">
+          {feature.site && (
+            <a className="repo" href={feature.site} target="_blank" rel="noopener">
+              {feature.siteLabel ?? "サイトを見る"} <span className="ar">→</span>
+            </a>
+          )}
+          {feature.repo && (
+            <a className="repo" href={feature.repo} target="_blank" rel="noopener">
+              GitHub <span className="ar">→</span>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

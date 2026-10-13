@@ -142,6 +142,10 @@ export interface FeaturePoint {
   b: string;
   text: string;
 }
+export interface FeatureStat {
+  value: string;
+  cap: string;
+}
 export interface FeaturedWork {
   kind: string;
   name: string;
@@ -151,11 +155,15 @@ export interface FeaturedWork {
   imageAlt: string;
   badge: string;
   summary: string;
+  stats?: FeatureStat[];
+  statsNote?: string;
   mainFeatures: FeaturePoint[];
   techPoints: FeaturePoint[];
   stack: string[];
   status: Status;
-  repo: string;
+  repo?: string;
+  site?: string;
+  siteLabel?: string;
 }
 export interface WorkGroup {
   screenLabel: string;
