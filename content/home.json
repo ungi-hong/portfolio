@@ -24,7 +24,7 @@
     { "value": 6, "unit": "年", "cap": "フロントエンド経験" },
     { "value": 8, "suffix": "社", "cap": "参画した開発現場" },
     { "value": 50, "suffix": "名", "cap": "最大チーム規模" },
-    { "value": 6, "unit": "点", "cap": "公開した制作物" }
+    { "value": 3, "unit": "点", "cap": "公開した制作物" }
   ],
   "camp": {
     "no": "02",
@@ -45,7 +45,7 @@
     "no": "03",
     "eyebrow": "Works",
     "title": "作ったもの",
-    "lead": "障害者割引と支援制度を探せる Web サービスから、エディタ拡張、日程調整アプリまで。手を動かして生まれた制作物たちです。",
+    "lead": "障害者割引と支援制度を探せる Web サービスから、日程調整アプリ、キャンプ場の空き通知ボットまで。手を動かして生まれた制作物たちです。",
     "items": [
       {
         "kind": "Web サービス",
@@ -54,15 +54,15 @@
         "href": "/works"
       },
       {
-        "kind": "VSCode / Cursor 拡張",
-        "name": "Claude Code Manager",
-        "desc": "複数の Claude Code セッションを、エディタを離れずサイドバーで一元管理。",
-        "href": "/works"
-      },
-      {
         "kind": "Web アプリ",
         "name": "TimePick",
         "desc": "Google Calendar と双方向同期する、面談日程調整カレンダー。",
+        "href": "/works"
+      },
+      {
+        "kind": "LINE ボット",
+        "name": "Fumotoppara Watcher",
+        "desc": "人気キャンプ場のキャンセル空きを検知して LINE 通知。",
         "href": "/works"
       }
     ],

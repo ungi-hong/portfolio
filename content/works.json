@@ -2,7 +2,7 @@
   "head": {
     "eyebrow": "Works — 作ったもの",
     "title": "手を動かして、<br />生まれたもの。",
-    "lead": "障害者割引と支援制度を探せる Web サービスから、エディタ拡張、キャンプ場の空き通知ボット、面談日程調整アプリまで。 「あったら便利」を形にしてきた制作物のまとめです。"
+    "lead": "障害者割引と支援制度を探せる Web サービスから、面談日程調整アプリ、キャンプ場の空き通知ボットまで。 「あったら便利」を形にしてきた制作物のまとめです。"
   },
   "groups": [
     {
@@ -47,50 +47,6 @@
         "site": "https://www.shogai-kurashi.jp/",
         "siteLabel": "サイトを見る"
       }
-    },
-    {
-      "screenLabel": "開発ツール",
-      "title": "開発ツール",
-      "subtitle": "エディタ / ブラウザ拡張",
-      "count": "公開中",
-      "cards": [
-        {
-          "kind": "VSCode / Cursor 拡張",
-          "name": "Claude Code Manager",
-          "desc": "複数の Claude Code セッションを、エディタを離れずサイドバーから一元管理する拡張機能。",
-          "feats": [
-            "ディレクトリごとに会話部屋を自動仕分け、文脈が混ざらない",
-            "動作中 / 待機 / 放置を一覧表示、クリックで即レジューム",
-            "権限モードやコンテキスト残量を色分け表示",
-            "ストリーミング応答・履歴再生・画像D&D・会話内検索まで Webview 内で完結"
-          ],
-          "status": { "label": "公開中", "type": "live" },
-          "repo": "https://github.com/ungi-hong/claude-code-manager"
-        },
-        {
-          "kind": "VSCode 拡張",
-          "name": "Command Board",
-          "desc": "よく使うコマンドを、ディレクトリを移動せずワンクリックで実行できる拡張機能。",
-          "feats": [
-            "settings.json に実行ディレクトリとコマンドを登録",
-            "各ディレクトリのコマンドを移動なしで実行",
-            "地味な反復作業をボード化して効率化"
-          ],
-          "status": { "label": "公開中", "type": "live" },
-          "repo": "https://github.com/ungi-hong/vscode-extension-command-board"
-        },
-        {
-          "kind": "Chrome 拡張",
-          "name": "GitHub Plus",
-          "desc": "GitHub での執筆を快適にする Chrome 拡張機能。PR や Issue 作成時のリスト操作を効率化。",
-          "feats": [
-            "Tab キーでリスト項目をネスト（子リスト化）",
-            "インデントを1段戻す操作にも対応"
-          ],
-          "status": { "label": "公開中", "type": "live" },
-          "repo": "https://github.com/ungi-hong/github-plus"
-        }
-      ]
     },
     {
       "screenLabel": "Webアプリ",
