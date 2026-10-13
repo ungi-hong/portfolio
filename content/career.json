@@ -53,14 +53,20 @@
     "title": "職務経歴",
     "items": [
       {
-        "period": "2024.10 — 現在",
+        "period": "2026.10 — 現在 ・ 正社員",
+        "company": "LINE WORKS株式会社",
+        "biz": "フロントエンドエンジニアとして勤務",
+        "projects": []
+      },
+      {
+        "period": "2024.10 — 2026.09",
         "company": "フリーランス（業務委託）",
         "tags": ["株式会社アプリボット", "株式会社ワサビ", "保守運用案件 ほか"],
         "projects": [
           {
             "name": "製造業向け部品調達プラットフォームの開発",
             "role": "FEエンジニア / メンバー",
-            "tech": "2025.02 — 現在 ・ チーム12〜13名 ・ TypeScript / React / Next.js / TanStack Query / Datadog / GitHub Actions / Figma MCP / Claude Code",
+            "tech": "2025.02 — 2026.09 ・ チーム12〜13名 ・ TypeScript / React / Next.js / TanStack Query / Datadog / GitHub Actions / Figma MCP / Claude Code",
             "desc": "部品を製造したいカスタマーと製造可能なサプライヤーをマッチングし、見積もり〜発注〜出荷までを一気通貫で完結できる大規模B2Bプラットフォーム。要件定義フェーズから参画。",
             "achievements": [
               {

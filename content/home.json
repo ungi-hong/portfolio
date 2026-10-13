@@ -22,7 +22,7 @@
   },
   "stats": [
     { "value": 6, "unit": "年", "cap": "フロントエンド経験" },
-    { "value": 7, "suffix": "社", "cap": "参画した開発現場" },
+    { "value": 8, "suffix": "社", "cap": "参画した開発現場" },
     { "value": 50, "suffix": "名", "cap": "最大チーム規模" },
     { "value": 6, "unit": "点", "cap": "公開した制作物" }
   ],
